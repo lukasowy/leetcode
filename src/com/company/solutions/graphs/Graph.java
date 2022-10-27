@@ -21,8 +21,10 @@ public class Graph {
         Graph busNetwork = new Graph(true, true);
         Vertex cliftonStation = busNetwork.addVertex("Clifton");
         Vertex capeMayStation = busNetwork.addVertex("Cape May Station");
+        Vertex cracowStation = busNetwork.addVertex("Cracow Station");
 
         busNetwork.addEdge(cliftonStation, capeMayStation, 123);
+        busNetwork.addEdge(cliftonStation, cracowStation, 2277);
 
         busNetwork.print();
 
