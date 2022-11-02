@@ -20,6 +20,9 @@ public class NodeTest {
         printNodes(a);
         System.out.println("==============================");
         printRecursivelyNodes(a);
+
+        System.out.println("==============================");
+        printRecursivelyNodes(reverseNodeList(a));
     }
 
     private static void printNodes(Node head) {
@@ -31,10 +34,25 @@ public class NodeTest {
     }
 
     private static void printRecursivelyNodes(Node head) {
-        if(head == null){
+        if (head == null) {
             return;
         }
         System.out.println(head.data.getData());
         printRecursivelyNodes(head.getNextNode());
+    }
+
+    private static Node reverseNodeList(Node head) {
+        Node previous = null;
+        Node current = head;
+        Node leader;
+
+        while (current != null) {
+            leader = current.getNextNode();
+            current.setNextNode(previous);
+            previous = current;
+            current = leader;
+        }
+
+        return previous;
     }
 }
