@@ -1,5 +1,8 @@
 package com.company.solutions.graphs;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 public class TreeNode {
 
     String value;
@@ -24,6 +27,24 @@ public class TreeNode {
         b.right = e;
         c.right = f;
 
-        System.out.println();
+        System.out.println("================================================");
+        depthFirstValues(a);
+    }
+
+    public static void depthFirstValues(TreeNode node) {
+        Deque<TreeNode> stack = new LinkedList<>();
+        stack.push(node);
+
+        while (!stack.isEmpty()) {
+            TreeNode currentTreeNode = stack.pop();
+            System.out.println(currentTreeNode.value);
+
+            if (currentTreeNode.left != null) {
+                stack.push(currentTreeNode.left);
+            }
+            if (currentTreeNode.right != null) {
+                stack.push(currentTreeNode.right);
+            }
+        }
     }
 }
