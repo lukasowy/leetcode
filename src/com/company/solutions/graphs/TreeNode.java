@@ -32,6 +32,8 @@ public class TreeNode {
     }
 
     public static void depthFirstValues(TreeNode node) {
+        if(node == null) return;
+
         Deque<TreeNode> stack = new LinkedList<>();
         stack.push(node);
 
