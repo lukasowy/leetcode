@@ -1,7 +1,9 @@
 package com.company.solutions.graphs;
 
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.List;
 
 public class TreeNode {
 
@@ -29,10 +31,13 @@ public class TreeNode {
 
         System.out.println("================================================");
         depthFirstValues(a);
+
+        System.out.println("================================================");
+        breadthFirstValues(a);
     }
 
     public static void depthFirstValues(TreeNode node) {
-        if(node == null) return;
+        if (node == null) return;
 
         Deque<TreeNode> stack = new LinkedList<>();
         stack.push(node);
@@ -49,4 +54,29 @@ public class TreeNode {
             }
         }
     }
+
+    public static void breadthFirstValues(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+
+        Deque<TreeNode> queue = new LinkedList<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+
+            TreeNode current = queue.pollFirst();
+            System.out.println(current.value);
+
+            if (current.left != null) {
+                queue.add(current.left);
+            }
+
+            if (current.right != null) {
+                queue.add(current.right);
+            }
+
+        }
+    }
+
 }
