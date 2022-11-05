@@ -1,9 +1,8 @@
 package com.company.solutions.graphs;
 
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Objects;
 
 public class TreeNode {
 
@@ -34,6 +33,9 @@ public class TreeNode {
 
         System.out.println("================================================");
         breadthFirstValues(a);
+
+        System.out.println("================================================");
+        System.out.println(treeIncludes(a, "e"));
     }
 
     public static void depthFirstValues(TreeNode node) {
@@ -78,5 +80,33 @@ public class TreeNode {
 
         }
     }
+
+    public static boolean treeIncludes(TreeNode node, String target) {
+        if (node == null) {
+            return false;
+        }
+
+        Deque<TreeNode> queue = new LinkedList<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+
+            TreeNode current = queue.pollFirst();
+            if (Objects.equals(current.value, target)) {
+                return true;
+            }
+
+            if (current.left != null) {
+                queue.add(current.left);
+            }
+
+            if (current.right != null) {
+                queue.add(current.right);
+            }
+
+        }
+        return false;
+    }
+
 
 }
